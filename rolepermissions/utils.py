@@ -2,6 +2,14 @@
 import re
 
 
+def camel_to_split(s):
+    _underscorer1 = re.compile(r'(.)([A-Z][a-z]+)')
+    _underscorer2 = re.compile('([a-z0-9])([A-Z])')
+
+    subbed = _underscorer1.sub(r'\1 \2', s)
+    return _underscorer2.sub(r'\1 \2', subbed).lower()
+
+
 def camelToSnake(s):
     """ 
     https://gist.github.com/jaytaylor/3660565

@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import get_user_model
 
-from rolepermissions.utils import camelToSnake
+from rolepermissions.utils import camelToSnake, camel_to_split
 
 
 class RolesClassRegister(type):
@@ -33,6 +33,10 @@ class RolesManager(object):
 class AbstractUserRole(object):
 
     __metaclass__ = RolesClassRegister
+
+    @classmethod
+    def verbose_name(cls):
+        return camel_to_split(cls.__name__)
 
     @classmethod
     def get_name(cls):
