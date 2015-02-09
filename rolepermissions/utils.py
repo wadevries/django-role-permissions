@@ -7,7 +7,7 @@ def camel_to_split(s):
     _underscorer2 = re.compile('([a-z0-9])([A-Z])')
 
     subbed = _underscorer1.sub(r'\1 \2', s)
-    return _underscorer2.sub(r'\1 \2', subbed).lower()
+    return _underscorer2.sub(r'\1 \2', subbed)
 
 
 def camelToSnake(s):
